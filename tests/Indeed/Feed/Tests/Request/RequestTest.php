@@ -49,7 +49,10 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             $this->setExpectedException('Indeed\Feed\Exceptions\InvalidTypeException');
         }
 
-        $this->request->setUrl($url);
+        $this->assertInstanceOf(
+            'Indeed\Feed\Request\Request',
+            $this->request->setUrl($url)
+        );
     }
 
     public function testSetOptions()
@@ -60,7 +63,38 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             'value'
         );
 
-        $this->request->setOptions($data);
+        $this->assertInstanceOf(
+            'Indeed\Feed\Request\Request',
+            $this->request->setOptions($data)
+        );
+
         $this->assertEquals($data, $this->request->getOptions());
+    }
+
+    public function testSendRequest()
+    {
+        $response = new Response();
+        $options = array(
+            'publisher' => PUBLISHER_KEY,
+            'q'         => 'php',
+            'l'         => 'london',
+            'co'        => 'gb',
+            'v'         => 2,
+            'limit'     => 9999
+        );
+        
+        $url = 'http://api.indeed.com/ads/apisearch?';
+
+        $result = $this->request
+            ->setResponse($response)
+            ->setOptions($options)
+            ->setUrl($url)
+            ->sendRequest();
+        
+        $this->assertInstanceOf(
+            'Indeed\Feed\Response\ResponseInterface',
+            $response
+        );
+
     }
 }

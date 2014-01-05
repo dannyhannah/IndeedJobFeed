@@ -20,10 +20,14 @@ class Request implements RequestInterface
      * Set the object which will handle the response from the API
      * 
      * @param ResponseInterface $response Object to handle response
+     *
+     * @return Request returns instance of self for chaining
      */
     public function setResponse(ResponseInterface $response)
     {
         $this->response = $response;
+
+        return $this;
     }
 
     /**
@@ -50,22 +54,30 @@ class Request implements RequestInterface
         }
 
         $this->url = $url;
+
+        return $this;
     }
 
     /**
      * Options to send in request
      * 
      * @param array $options array of options
+     *
+     * @return Request returns instance of self for chaining
      */
     public function setOptions(array $options)
     {
         $this->options = $options;
+
+        return $this;
     }
 
     /**
      * Options to send in request
      * 
      * @return array $options array of options
+     *
+     * @return Request returns instance of self for chaining
      */
     public function getOptions()
     {
@@ -76,6 +88,8 @@ class Request implements RequestInterface
      * Builds the request and sends response to the response object
      * 
      * @return Response  response object
+     *
+     * @return Request returns instance of self for chaining
      */
     public function sendRequest()
     {

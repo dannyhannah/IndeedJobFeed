@@ -9,6 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
+         bootstrap="./tests/Indeed/index.php"
 >
     <testsuites>
         <testsuite name="Indeed API view tests">
