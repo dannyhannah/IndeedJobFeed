@@ -27,6 +27,16 @@ class Request implements RequestInterface
     }
 
     /**
+     * Return the set response
+     * 
+     * @return null|ResponseInterface value of $this->
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
      * Set the request url
      * 
      * @param string $url url to use in request
@@ -34,8 +44,8 @@ class Request implements RequestInterface
     public function setUrl($url)
     {
         if (!is_string($url)) {
-            $message = sprintf('Invalid type given: %s required %s given', array('string', gettype($url)));
-            
+            $message = sprintf('Invalid type given: %s required %s given', 'string', gettype($url));
+
             throw new InvalidTypeException($message);
         }
 
@@ -50,6 +60,16 @@ class Request implements RequestInterface
     public function setOptions(array $options)
     {
         $this->options = $options;
+    }
+
+    /**
+     * Options to send in request
+     * 
+     * @return array $options array of options
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     /**

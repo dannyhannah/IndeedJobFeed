@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 
 // Set your API Publisher number
-define('PUBLISHER_KEY', 123456);
+define('PUBLISHER_KEY', 3024762205542040);
 
 $loader = new Twig_Loader_Filesystem(__DIR__.'/src/Indeed/Feed/View/');
 $twig = new Twig_Environment($loader);
